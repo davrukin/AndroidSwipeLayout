@@ -18,8 +18,8 @@ public abstract class BaseSwipeAdapter extends BaseAdapter implements SwipeItemM
 
     /**
      * return the {@link com.daimajia.swipe.SwipeLayout} resource id, int the view item.
-     * @param position
-     * @return
+     * @param position the position
+     * @return the id
      */
     public abstract int getSwipeLayoutResourceId(int position);
 
@@ -28,16 +28,16 @@ public abstract class BaseSwipeAdapter extends BaseAdapter implements SwipeItemM
      * Never bind SwipeListener or fill values here, every item has a chance to fill value or bind
      * listeners in fillValues.
      * to fill it in {@code fillValues} method.
-     * @param position
-     * @param parent
-     * @return
+     * @param position the position
+     * @param parent the parent
+     * @return the view
      */
     public abstract View generateView(int position, ViewGroup parent);
 
     /**
      * fill values or bind listeners to the view.
-     * @param position
-     * @param convertView
+     * @param position the position
+     * @param convertView the view
      */
     public abstract void fillValues(int position, View convertView);
 

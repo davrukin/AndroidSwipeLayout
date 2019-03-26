@@ -24,8 +24,8 @@ public class SwipeItemMangerImpl implements SwipeItemMangerInterface {
 
     protected int mOpenPosition = INVALID_POSITION;
 
-    protected Set<Integer> mOpenPositions = new HashSet<Integer>();
-    protected Set<SwipeLayout> mShownLayouts = new HashSet<SwipeLayout>();
+    protected Set<Integer> mOpenPositions = new HashSet<>();
+    protected Set<SwipeLayout> mShownLayouts = new HashSet<>();
 
     protected SwipeAdapterInterface swipeAdapterInterface;
 
@@ -49,7 +49,7 @@ public class SwipeItemMangerImpl implements SwipeItemMangerInterface {
 
     public void bind(View view, int position) {
         int resId = swipeAdapterInterface.getSwipeLayoutResourceId(position);
-        SwipeLayout swipeLayout = (SwipeLayout) view.findViewById(resId);
+        SwipeLayout swipeLayout = view.findViewById(resId);
         if (swipeLayout == null)
             throw new IllegalStateException("can not find SwipeLayout in target view");
 
@@ -71,8 +71,7 @@ public class SwipeItemMangerImpl implements SwipeItemMangerInterface {
     @Override
     public void openItem(int position) {
         if (mode == Attributes.Mode.Multiple) {
-            if (!mOpenPositions.contains(position))
-                mOpenPositions.add(position);
+            mOpenPositions.add(position);
         } else {
             mOpenPosition = position;
         }
@@ -118,7 +117,7 @@ public class SwipeItemMangerImpl implements SwipeItemMangerInterface {
     @Override
     public List<Integer> getOpenItems() {
         if (mode == Attributes.Mode.Multiple) {
-            return new ArrayList<Integer>(mOpenPositions);
+            return new ArrayList<>(mOpenPositions);
         } else {
             return Collections.singletonList(mOpenPosition);
         }
@@ -126,7 +125,7 @@ public class SwipeItemMangerImpl implements SwipeItemMangerInterface {
 
     @Override
     public List<SwipeLayout> getOpenLayouts() {
-        return new ArrayList<SwipeLayout>(mShownLayouts);
+        return new ArrayList<>(mShownLayouts);
     }
 
     @Override
